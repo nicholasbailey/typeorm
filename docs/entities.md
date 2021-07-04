@@ -2,7 +2,7 @@
 
 # Entities
 
-* [What is Entity?](#what-is-entity)
+* [What is an Entity?](#what-is-entity)
 * [Entity columns](#entity-columns)
   * [Primary columns](#primary-columns)
   * [Special columns](#special-columns)
@@ -96,7 +96,7 @@ const connection: Connection = await createConnection({
 If you want to use an alternative table name for the `User` entity you can specify it in `@Entity`: `@Entity("my_users")`.
 If you want to set a base prefix for all database tables in your application you can specify `entityPrefix` in connection options.
 
-When using an entity constructor its arguments **must be optional**. Since ORM creates instances of entity classes when loading from the database, therefore it is not aware of your constructor arguments.
+When using an entity constructor its arguments **must be optional**. Since the ORM creates instances of entity classes when loading from the database, it is not aware of your constructor arguments.
 
 Learn more about parameters `@Entity` in [Decorators reference](decorator-reference.md).
 
@@ -110,7 +110,7 @@ Each entity class property you marked with `@Column` will be mapped to a databas
 Each entity must have at least one primary column.
 There are several types of primary columns:
 
-* `@PrimaryColumn()` creates a primary column which takes any value of any type. You can specify the column type. If you don't specify a column type it will be inferred from the property type. The example below will create id with `int` as type which you must manually assign before save.
+* `@PrimaryColumn()` creates a primary column which takes any value of any type. You can specify the column type. If you don't specify a column type it will be inferred from the property type. The example below will create id with `int` as type which you must manually assign it a value before saving.
 
 ```typescript
 import {Entity, PrimaryColumn} from "typeorm";
@@ -125,7 +125,7 @@ export class User {
 }
 ```
 
-* `@PrimaryGeneratedColumn()` creates a primary column which value will be automatically generated with an auto-increment value. It will create `int` column with `auto-increment`/`serial`/`sequence` (depend on the database). You don't have to manually assign its value before save - value will be automatically generated.
+* `@PrimaryGeneratedColumn()` creates a primary column which will be automatically generated with an auto-increment value. It will create `int` column with `auto-increment`/`serial`/`sequence` (depending on the database). You don't have to manually assign its value before saving, the value will be automatically generated.
 
 ```typescript
 import {Entity, PrimaryGeneratedColumn} from "typeorm";
@@ -140,7 +140,7 @@ export class User {
 }
 ```
 
-* `@PrimaryGeneratedColumn("uuid")` creates a primary column which value will be automatically generated with `uuid`. Uuid is a unique string id. You don't have to manually assign its value before save - value will be automatically generated.
+* `@PrimaryGeneratedColumn("uuid")` creates a primary column which value will be automatically generated with `uuid`. Uuids are unique string ids. You don't have to manually assign its value before save, the value will be automatically generated.
 
 ```typescript
 import {Entity, PrimaryGeneratedColumn} from "typeorm";
@@ -506,7 +506,7 @@ When you'll load data from the database, you will have your object/array/primiti
 
 ### Columns with generated values
 
-You can create column with generated value using `@Generated` decorator. For example:
+You can create a column with a generated value using `@Generated` decorator. For example:
 
 ```typescript
 @Entity()
@@ -530,7 +530,7 @@ or some of them require increment to be a primary key).
 
 ## Column options
 
-Column options defines additional options for your entity columns.
+Column options define additional options for your entity columns.
 You can specify column options on `@Column`:
 
 ```typescript
@@ -582,7 +582,7 @@ Note: most of those column options are RDBMS-specific and aren't available in `M
 
 You can reduce duplication in your code by using entity inheritance.
 
-For example, you have `Photo`, `Question`, `Post` entities:
+For example, suppose you have `Photo`, `Question`, `Post` entities:
 
 ```typescript
 @Entity()
